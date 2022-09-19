@@ -1609,7 +1609,7 @@ another:
 			res := c.t.cl.config.UploadRateLimiter.ReserveN(time.Now(), int(r.Length))
 			fmt.Printf("after ReserveN: %t\n", res.OK())
 			if !res.OK() {
-				panic(fmt.Sprintf("upload rate limiter burst size < %d, burst=%d, limit=%d", r.Length, c.t.cl.config.UploadRateLimiter.Burst(), c.t.cl.config.UploadRateLimiter.Limit()))
+				panic(fmt.Sprintf("upload rate limiter burst size < %d", r.Length))
 			}
 			delay := res.Delay()
 			if delay > 0 {
