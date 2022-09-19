@@ -1605,7 +1605,7 @@ another:
 			if state.data == nil {
 				continue
 			}
-			fmt.Printf("before ReserveN: %d, %d\n", c.t.cl.config.UploadRateLimiter.Burst(), int(r.Length))
+			fmt.Printf("before ReserveN: %f, %d, %d\n", c.t.cl.config.UploadRateLimiter.Limit(), c.t.cl.config.UploadRateLimiter.Burst(), int(r.Length))
 			res := c.t.cl.config.UploadRateLimiter.ReserveN(time.Now(), int(r.Length))
 			fmt.Printf("after ReserveN: %t\n", res.OK())
 			if !res.OK() {
