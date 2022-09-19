@@ -1605,6 +1605,7 @@ another:
 			if state.data == nil {
 				continue
 			}
+			fmt.Printf("burst: %d, %d\n", c.t.cl.config.UploadRateLimiter.Burst(), c.t.cl.config.UploadRateLimiter.Limit())
 			res := c.t.cl.config.UploadRateLimiter.ReserveN(time.Now(), int(r.Length))
 			if !res.OK() {
 				panic(fmt.Sprintf("upload rate limiter burst size < %d, burst=%d, limit=%d", r.Length, c.t.cl.config.UploadRateLimiter.Burst(), c.t.cl.config.UploadRateLimiter.Limit()))
